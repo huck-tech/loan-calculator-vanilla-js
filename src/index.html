@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Loan Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root">
+      <div class="form-wrapper">
+        <div class="form-group">
+          <label for="purchase-amount">Purchase amount</label>
+          <input type="text" class="form-control" id="purchase-amount" autocomplete="off" pattern="[0-9]*" inputmode="numeric"/>
+        </div>
+        <div class="form-group">
+          <label for="down-payment">Down payment</label>
+          <input type="text" id="down-payment" class="form-control" autocomplete="off" pattern="[0-9]*" inputmode="numeric" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="loan-term">Loan term</label>
+            <input type="text" id="loan-term" class="form-control" autocomplete="off" pattern="[0-9]*" inputmode="numeric" />
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="loanTermOptions" id="option-months" value="month" checked aria-checked="true">&nbsp;&nbsp;
+            <label class="form-check-label" for="radio-months">Months</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="loanTermOptions" id="option-years" value="year">&nbsp;&nbsp;
+            <label class="form-check-label" for="option-years">Years</label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="interest-rate">Interest rate</label>
+            <input type="text" id="interest-rate" class="form-control" autocomplete="off" pattern="[0-9]*" inputmode="numeric" />
+          </div>
+          <button class="form-button" id="calc-button">CALCULATE</button>
+        </div>
+
+        <div>
+          <h3 class="learn-more">Ready to learn more?</h3>
+          <div class="button-group">
+            <button class="form-button">APPLY NOW</button>
+            <button class="form-button">FIND OUT MORE</button>
+          </div>
+        </div>
+      </div>
+      <div class="result-panel" id="result-panel">
+        <div>
+          <label>Monthly payment</label>
+          <div class="payment-result">
+            <span id="calculate-result-text"></span>
+          </div>
+        </div>
+        <div class="calculator-disclaimer">
+          <div>Calculator Disclaimer</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
