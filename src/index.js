@@ -23,7 +23,7 @@ function formatPercentNumber (rawValue) {
   rawValue = rawValue.replace('%', '')
   const rawNumber = parseFloat(rawValue || "0");
 
-  return { value: rawValue + '%', number: rawNumber}
+  return { value: rawValue, number: rawNumber}
 }
 
 (() => {
@@ -39,21 +39,21 @@ function formatPercentNumber (rawValue) {
   const purchaseAmountEl = document.getElementById('purchase-amount');
   purchaseAmountEl.addEventListener('input', (e) => {
     const { value, number } = formatPriceNumber(e.target.value)
-    purchaseAmountEl.value = value;
+    purchaseAmountEl.value = number ? value : "";
     formData.purchaseAmount = number;
   });
 
   const downPaymentEl = document.getElementById('down-payment');
   downPaymentEl.addEventListener('input', (e) => {
     const { value, number } = formatPriceNumber(e.target.value)
-    downPaymentEl.value = value;
+    downPaymentEl.value = number ? value : "";
     formData.downPayment = number;
   })
 
   const loanTermEl = document.getElementById('loan-term');
   loanTermEl.addEventListener('input', (e) => {
     const { value, number } = formatNumber(e.target.value)
-    loanTermEl.value = value;
+    loanTermEl.value = number ? value : "";
     formData.loanTerm = number;
   })
   
@@ -69,6 +69,11 @@ function formatPercentNumber (rawValue) {
     const { value, number } = formatPercentNumber(e.target.value);
     interestRateEl.value = value;
     formData.interestRate = number
+  })
+
+  interestRateEl.addEventListener('blur', (e) => {
+    const { value, number } = formatPercentNumber(e.target.value);
+    interestRateEl.value = number ? number.toFixed(3) + '%' : "";
   })
 
   document.getElementById('calc-button').addEventListener('click', (e) => {
